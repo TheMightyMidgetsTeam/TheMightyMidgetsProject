@@ -1,0 +1,336 @@
+{
+  "title": "jobs",
+  "id": 1,
+  "formatVersion": 2,
+  "ideas": {
+    "1": {
+      "title": "потребители",
+      "id": 2,
+      "ideas": {
+        "7": {
+          "title": "регистрация / редакция",
+          "id": 16,
+          "ideas": {
+            "1": {
+              "title": "парола",
+              "id": 8,
+              "attr": {
+                "style": {}
+              }
+            },
+            "2": {
+              "title": "булстат/егн",
+              "id": 11,
+              "attr": {
+                "style": {}
+              }
+            },
+            "7": {
+              "title": "роля",
+              "id": 39,
+              "ideas": {
+                "1": {
+                  "title": "администратори",
+                  "id": 41,
+                  "ideas": {
+                    "1": {
+                      "title": "администриране",
+                      "id": 48,
+                      "attr": {
+                        "style": {
+                          "background": "#00ccff"
+                        }
+                      }
+                    }
+                  }
+                },
+                "2": {
+                  "title": "работодатели",
+                  "id": 42,
+                  "ideas": {}
+                },
+                "3": {
+                  "title": "обикновенни потрбители",
+                  "id": 43
+                }
+              }
+            },
+            "0.5": {
+              "title": "име",
+              "id": 6,
+              "attr": {
+                "style": {}
+              }
+            },
+            "0.75": {
+              "title": "фамилия",
+              "id": 10,
+              "attr": {
+                "style": {}
+              }
+            },
+            "0.875": {
+              "title": "e-mail",
+              "id": 7,
+              "attr": {
+                "style": {}
+              }
+            },
+            "0.25": {
+              "title": "акаунт",
+              "id": 4,
+              "ideas": {},
+              "attr": {
+                "style": {}
+              }
+            },
+            "1.5": {
+              "title": "снимка",
+              "id": 40,
+              "attr": {
+                "style": {}
+              }
+            }
+          },
+          "attr": {
+            "style": {
+              "background": "#00ccff"
+            },
+            "position": [
+              22,
+              -149,
+              2
+            ]
+          }
+        },
+        "8": {
+          "title": "вход",
+          "id": 24,
+          "attr": {
+            "style": {
+              "background": "#00ccff"
+            },
+            "position": [
+              95,
+              90.5,
+              1
+            ]
+          }
+        },
+        "9": {
+          "title": "изход",
+          "id": 25,
+          "attr": {
+            "style": {
+              "background": "#ff0000"
+            }
+          }
+        },
+        "10": {
+          "title": "начална страница според ролята",
+          "id": 47,
+          "attr": {
+            "style": {
+              "background": "#00ccff"
+            },
+            "position": [
+              109,
+              142,
+              3
+            ]
+          }
+        }
+      }
+    },
+    "-1": {
+      "title": "обяви",
+      "id": 12,
+      "ideas": {
+        "1": {
+          "title": "разглеждане",
+          "id": 14,
+          "attr": {
+            "style": {
+              "background": "#00ccff"
+            }
+          },
+          "ideas": {}
+        },
+        "2": {
+          "title": "кандидатстване",
+          "id": 15,
+          "attr": {
+            "style": {
+              "background": "#00ccff"
+            }
+          },
+          "ideas": {
+            "1": {
+              "title": "потребител",
+              "id": 33
+            },
+            "2": {
+              "title": "телефон за връзка",
+              "id": 34
+            },
+            "3": {
+              "title": "CV файл",
+              "id": 35
+            }
+          }
+        },
+        "3": {
+          "title": "списък от обяви",
+          "id": 23,
+          "attr": {
+            "style": {
+              "background": "#00ccff"
+            }
+          },
+          "ideas": {
+            "1": {
+              "title": "сортиране",
+              "id": 36,
+              "attr": {
+                "style": {
+                  "background": "#ff0000"
+                }
+              }
+            }
+          }
+        },
+        "0.5": {
+          "title": "публикуване / редактиране",
+          "id": 17,
+          "attr": {
+            "style": {
+              "background": "#00ccff"
+            },
+            "position": [
+              95,
+              -198,
+              1
+            ]
+          },
+          "ideas": {
+            "1": {
+              "title": "дата на публикуване",
+              "id": 20
+            },
+            "3": {
+              "title": "категория",
+              "id": 26,
+              "ideas": {
+                "1": {
+                  "title": "списък",
+                  "id": 37,
+                  "ideas": {
+                    "1": {
+                      "title": "редакция",
+                      "id": 45,
+                      "attr": {
+                        "style": {
+                          "background": "#00ccff"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "4": {
+              "title": "град",
+              "id": 28,
+              "ideas": {
+                "1": {
+                  "title": "списък",
+                  "id": 44,
+                  "attr": {
+                    "style": {}
+                  },
+                  "ideas": {
+                    "1": {
+                      "title": "редакция",
+                      "attr": {
+                        "style": {
+                          "background": "#00ccff"
+                        }
+                      },
+                      "id": 46
+                    }
+                  }
+                }
+              }
+            },
+            "5": {
+              "title": "адрес",
+              "id": 32
+            },
+            "6": {
+              "title": "кандидати",
+              "id": 50
+            },
+            "2.5": {
+              "title": "тяло/описание",
+              "id": 29,
+              "attr": {
+                "style": {}
+              }
+            },
+            "0.5": {
+              "title": "заглавие/позиция",
+              "id": 30,
+              "attr": {
+                "position": [
+                  139,
+                  -146.5,
+                  1
+                ],
+                "style": {}
+              }
+            },
+            "1.25": {
+              "title": "дата на валидност",
+              "id": 21,
+              "attr": {
+                "position": [
+                  158,
+                  -113.5,
+                  3
+                ],
+                "style": {}
+              },
+              "ideas": {}
+            },
+            "0.25": {
+              "title": "потребител",
+              "id": 31,
+              "attr": {
+                "style": {}
+              }
+            }
+          }
+        }
+      },
+      "attr": {
+        "storyboard-scenes": [
+          {
+            "storyboards": {
+              "Storyboard 1": 4
+            },
+            "type": "with-children"
+          }
+        ],
+        "style": {}
+      }
+    }
+  },
+  "attr": {
+    "storyboards": [
+      "Storyboard 1"
+    ],
+    "style": {
+      "background": "#339966"
+    }
+  }
+}

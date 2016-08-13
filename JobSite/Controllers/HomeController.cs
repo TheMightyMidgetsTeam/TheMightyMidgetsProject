@@ -22,7 +22,7 @@ namespace JobSite.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your contact pageeeee.";
 
             return View();
         }

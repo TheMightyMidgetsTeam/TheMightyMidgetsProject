@@ -19,5 +19,11 @@ namespace JobSite.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<JobSite.Models.JobPost> JobPosts { get; set; }
+
+        public System.Data.Entity.DbSet<JobSite.Models.Category> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<JobSite.Models.City> Cities { get; set; }
     }
 }

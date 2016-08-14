@@ -14,7 +14,7 @@ namespace JobSite.Models
         [StringLength(100)]
         public string FullName { get; set; }
 
-        public Role RoleId { get; set; }
+        //   public System.DateTime BirthDate { get; set; } 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -12,7 +12,9 @@ namespace JobSite.Models
     {
 
         [StringLength(100)]
-        public string FullName { get; set; }
+        public string FullNameeEe { get; set; }
+
+        public byte[] photo { get; set; }
 
         //   public System.DateTime BirthDate { get; set; } 
 

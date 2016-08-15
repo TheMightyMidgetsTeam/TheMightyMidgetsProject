@@ -11,7 +11,7 @@ namespace JobSite.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        //[Required]
         public ApplicationUser UserID { get; set; }
 
         [Required]
@@ -19,9 +19,11 @@ namespace JobSite.Models
         public string Heading { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime PublishDate { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime ExpireDate { get; set; }
 
         [Required]

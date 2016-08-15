@@ -17,7 +17,7 @@ namespace JobSite.Models
         public DateTime ApplyDate { get; set; }
 
         [Required]
-        public string CvFile { get; set; }
+        public byte[] CvFile { get; set; }
 
         [Required]
         [StringLength(20)]

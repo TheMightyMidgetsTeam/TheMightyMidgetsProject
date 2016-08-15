@@ -168,6 +168,7 @@ namespace JobSite.Controllers
                 }
 
 
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FullName = model.FullName, Files=model.Files };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

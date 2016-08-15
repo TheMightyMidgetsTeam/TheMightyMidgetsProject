@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace JobSite.Models
 {
@@ -12,9 +13,9 @@ namespace JobSite.Models
     {
 
         [StringLength(100)]
-        public string FullNameeEe { get; set; }
+        public string FullName { get; set; }
 
-        public byte[] photo { get; set; }
+        public byte[] Photo { get; set; }
 
         //   public System.DateTime BirthDate { get; set; } 
 
@@ -25,5 +26,7 @@ namespace JobSite.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual ICollection<File> Files { get; set; }
     }
 }

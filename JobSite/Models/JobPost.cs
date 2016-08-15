@@ -29,5 +29,7 @@ namespace JobSite.Models
         [Required]
         public string body { get; set; }
 
+        
+
     }
 }

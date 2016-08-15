@@ -64,6 +64,9 @@ namespace JobSite.Models
 
     public class RegisterViewModel
     {
+        public string FullName { get; set; }
+        public virtual ICollection<File> Files { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -26,6 +26,10 @@ namespace JobSite.Models
 
         public System.Data.Entity.DbSet<JobSite.Models.City> Cities { get; set; }
 
-        public System.Data.Entity.DbSet<JobSite.Models.ApplyJob> ApplayJob { get; set; }
+        public System.Data.Entity.DbSet<JobSite.Models.ApplyJob> ApplayJobs { get; set; }
+
+        public System.Data.Entity.DbSet<JobSite.Models.File> Files { get; set; }
+
     }
+
 }

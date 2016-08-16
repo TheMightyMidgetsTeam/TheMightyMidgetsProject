@@ -14,10 +14,10 @@
         <hr/>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.CvFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
             <div  class="col-md-10" action="demo_form.asp">
                 <input type="file" name="Избор на Файл" />                
-                @Html.ValidationMessageFor(model => model.CvFile, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
             </div>
         </div>
                 
@@ -48,7 +48,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "JobPosts/Index")
+    @Html.ActionLink("Back to List", "Index", "JobPosts", routeValues: null, htmlAttributes: new { id = "jobPostsLink" })
 </div>
 
 @section Scripts {

@@ -5,11 +5,7 @@ namespace JobSite.Models
 {
     public class ApplyJob
     {
-        public ApplyJob()
-        {
-            this.ApplyDate = DateTime.Now;
-        }
-
+ 
         [Key]
         public int Id { get; set; }
 
@@ -17,7 +13,7 @@ namespace JobSite.Models
         public DateTime ApplyDate { get; set; }
 
         [Required]
-        public byte[] CvFile { get; set; }
+        public virtual System.Collections.Generic.ICollection<File> Files { get; set; }
 
         [Required]
         [StringLength(20)]

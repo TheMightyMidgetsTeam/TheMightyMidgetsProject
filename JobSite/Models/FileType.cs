@@ -2,6 +2,6 @@
 {
     public enum FileType
     {
-        Avatar = 1, Photo
+        Photo = 1, CV = 2
     }
 }

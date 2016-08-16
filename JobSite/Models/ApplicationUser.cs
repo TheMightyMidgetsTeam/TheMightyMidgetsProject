@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.Web;
 
 namespace JobSite.Models
 {
@@ -28,5 +29,36 @@ namespace JobSite.Models
         }
 
         public virtual ICollection<File> Files { get; set; }
+        public static void AddPhotoToUser(HttpPostedFileBase upload, ApplicationUser user)
+        {
+            user.AddFileToUser(upload, FileType.Photo);
+        }
+        public void AddFileToUser(HttpPostedFileBase upload, FileType ft)
+        {
+            if (upload != null && upload.ContentLength > 0)
+            {
+                var file = new File
+                {
+                    FileName = System.IO.Path.GetFileName(upload.FileName),
+                    FileType = ft,
+                    ContentType = upload.ContentType
+                };
+                using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                {
+                    file.Content = reader.ReadBytes(upload.ContentLength);
+                }
+                if (this.Files == null)
+                {
+                    this.Files = new List<File> { file };
+                }
+                else this.Files.Add(file);
+                if (ft == FileType.Photo)
+                {
+                    this.Photo = file.Content;
+                }
+
+            }
+
+        }
     }
 }

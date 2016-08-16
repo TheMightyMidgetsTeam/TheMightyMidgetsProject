@@ -12,7 +12,7 @@ namespace JobSite.Models
         public int Id { get; set; }
 
         //[Required]
-        public ApplicationUser UserID { get; set; }
+        public virtual ApplicationUser UserID { get; set; }
 
         [Required]
         [StringLength(50)]

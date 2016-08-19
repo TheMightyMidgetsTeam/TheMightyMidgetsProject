@@ -1,14 +1,19 @@
-﻿@model DateTime?
+﻿@*model DateTime?
+    @Html.TextBoxFor(model => Model,
+       "{0:dd-MM-yyyy}",
+       new { @class = "form-control", type="date"})
+*@
+@model DateTime?
 
-@{ 
-    DateTime dt = DateTime.Now;
-    if (Model != null)
-    {
-        dt = (System.DateTime)Model;
+    @{
+        DateTime dt = DateTime.Now;
+        if (Model != null)
+        {
+            dt = (System.DateTime)Model;
 
-    }
-@Html.TextBox("", String.Format("{0:d}", dt.ToShortDateString()),
-          new { @class = "form-control date", type = "date" })
+        }
+    @Html.TextBox("", String.Format("{0:d}", dt.ToShortDateString()),
+              new { @class = "form-control date", type = "date" })
 
     }
 

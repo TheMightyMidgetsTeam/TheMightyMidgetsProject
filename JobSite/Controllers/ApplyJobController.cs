@@ -16,5 +16,21 @@ namespace JobSite.Controllers
         {
             return View();
         }
+
+        // POST: ApplyJob        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ApplyJob([Bind(Include = "Id,ApplyDate,Files,Phone,Message,")] ApplyJob applyJob)
+        {
+            if (ModelState.IsValid)
+            {
+                applyJob.ApplyDate = DateTime.Now;                                
+                db.ApplayJobs.Add(applyJob);
+                db.SaveChanges();
+                return RedirectToAction("Index","JobPosts");
+            }
+
+            return View(applyJob);
+        }
     }
 }

@@ -19,6 +19,8 @@ namespace JobSite.Models
         [StringLength(20)]
         public string Phone { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        [StringLength(200)]
         public string Message { get; set; }
 
         [Required]

@@ -19,11 +19,11 @@ namespace JobSite.Models
         public string Heading { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date)]        
         public DateTime PublishDate { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+        [Required]        
+        [DataType(DataType.Date)]        
         public DateTime ExpireDate { get; set; }
 
         [Required]

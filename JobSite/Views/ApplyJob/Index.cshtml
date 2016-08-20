@@ -1,28 +1,28 @@
 ﻿@model JobSite.Models.ApplyJob
 
-@{ 
-    ViewBag.Title = "ApplyJob";
+@{
+    ViewBag.Title = "Кандидатстване";
 }
 
-<h2>Apply Job</h2>
+<h2>Кандидатстване</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <hr/>
+        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div  class="col-md-10" action="demo_form.asp">
+            <div class="col-md-10" action="demo_form.asp">
                 <form action="upload.aspx" method="post" enctype="multipart/form-data">
                     <input runat="server" type="file" name="Избор на Файл" />
-                </form>                               
+                </form>
                 @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
             </div>
         </div>
-                
+
         <div class="form-group">
             @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" }})
+                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -56,3 +56,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+

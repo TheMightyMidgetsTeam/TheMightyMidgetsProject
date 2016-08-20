@@ -1,9 +1,12 @@
-﻿using JobSite.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using JobSite.Models;
 
 namespace JobSite.Controllers
 {
@@ -12,22 +15,22 @@ namespace JobSite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ApplyJob
-        public ActionResult ApplyJob()
+        public ActionResult Index()
         {
             return View();
         }
 
-        // POST: ApplyJob        
+        // POST: ApplyJob / ApplyForJob       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ApplyJob([Bind(Include = "Id,ApplyDate,Files,Phone,Message,")] ApplyJob applyJob)
+        public ActionResult Index([Bind(Include = "Id,Phone,Message")] ApplyJob applyJob)
         {
             if (ModelState.IsValid)
             {
-                applyJob.ApplyDate = DateTime.Now;                                
                 db.ApplayJobs.Add(applyJob);
+                applyJob.ApplyDate = DateTime.Now;
                 db.SaveChanges();
-                return RedirectToAction("Index","JobPosts");
+                return RedirectToAction("Index");
             }
 
             return View(applyJob);

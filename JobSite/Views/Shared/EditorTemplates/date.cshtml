@@ -1,9 +1,4 @@
-﻿@*model DateTime?
-    @Html.TextBoxFor(model => Model,
-       "{0:dd-MM-yyyy}",
-       new { @class = "form-control", type="date"})
-*@
-@model DateTime?
+﻿@model DateTime?
 
     @{
         DateTime dt = DateTime.Now;
@@ -16,7 +11,6 @@
               new { @class = "form-control date", type = "date" })
 
     }
-
 @*@model Nullable<DateTime>
 
 @{

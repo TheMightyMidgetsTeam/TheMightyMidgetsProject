@@ -17,8 +17,12 @@ namespace JobSite.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            var category = db.Categories.OrderBy(a => a.CategoryName);
+
+            return View(category.ToList());
         }
+
+        
 
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
@@ -37,7 +41,7 @@ namespace JobSite.Controllers
 
         // GET: Categories/Create
         public ActionResult Create()
-        {
+        {            
             return View();
         }
 
@@ -53,7 +57,7 @@ namespace JobSite.Controllers
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            }           
 
             return View(category);
         }

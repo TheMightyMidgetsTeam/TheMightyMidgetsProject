@@ -12,16 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Heading)
+            @Html.DisplayName("Заглавие")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PublishDate)
+            @Html.DisplayName("Дата на публикуване")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExpireDate)
+            @Html.DisplayName("Валидна до")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.body)
+            @Html.DisplayName("Описание")
+        </th>
+        <th>
+            @Html.DisplayName("Град")
+        </th>
+        <th>
+            @Html.DisplayName("Категория")
         </th>
         <th></th>
     </tr>
@@ -38,7 +44,13 @@
             @Html.DisplayFor(modelItem => item.ExpireDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.body)
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
             @Html.ActionLink("Редактирай", "Edit", new { id=item.Id }) |

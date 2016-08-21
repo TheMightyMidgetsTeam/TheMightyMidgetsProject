@@ -38,6 +38,8 @@ namespace JobSite.Controllers
         // GET: JobPosts/Create
         public ActionResult Create()
         {
+            ViewBag.CityName = new SelectList(db.Cities, "CityName", "CityName");
+            ViewBag.CategoryName = new SelectList(db.Categories, "CategoryName", "CategoryName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace JobSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Heading,PublishDate,ExpireDate,body")] JobPost jobPost)
+        public ActionResult Create([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body,City,Category")] JobPost jobPost)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,9 @@ namespace JobSite.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CityName = new SelectList(db.Cities, "CityName", "CityName", jobPost.City);
+            ViewBag.CategoryName = new SelectList(db.Categories, "CategoryName", "CategoryName", jobPost.Category);
+            
             return View(jobPost);
         }
 
@@ -78,7 +83,7 @@ namespace JobSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Heading,PublishDate,ExpireDate,body")] JobPost jobPost)
+        public ActionResult Edit([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body,City,Category")] JobPost jobPost)
         {
             if (ModelState.IsValid)
             {

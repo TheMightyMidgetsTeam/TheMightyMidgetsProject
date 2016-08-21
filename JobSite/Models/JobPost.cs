@@ -27,9 +27,15 @@ namespace JobSite.Models
         public DateTime ExpireDate { get; set; }
 
         [Required]
-        public string body { get; set; }
+        public string Body { get; set; }
 
-        
+        [StringLength(30)]
+        public string City { get; set; }
+
+        [StringLength(30)]
+        public string Category { get; set; }
+
+
 
     }
 }

@@ -10,6 +10,7 @@ using JobSite.Models;
 
 namespace JobSite.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class CategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

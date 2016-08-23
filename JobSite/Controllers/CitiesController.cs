@@ -10,11 +10,13 @@ using JobSite.Models;
 
 namespace JobSite.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class CitiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Cities
+        
         public ActionResult Index()
         {
             return View(db.Cities.ToList());

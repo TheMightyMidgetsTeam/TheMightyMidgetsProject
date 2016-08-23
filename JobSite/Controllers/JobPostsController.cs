@@ -10,6 +10,7 @@ using JobSite.Models;
 
 namespace JobSite.Controllers
 {
+    
     public class JobPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -36,6 +37,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CityName = new SelectList(db.Cities, "CityName", "CityName");
@@ -64,6 +66,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +86,7 @@ namespace JobSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body,City,Category")] JobPost jobPost)
         {
             if (ModelState.IsValid)
@@ -95,6 +99,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +117,7 @@ namespace JobSite.Controllers
         // POST: JobPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             JobPost jobPost = db.JobPosts.Find(id);

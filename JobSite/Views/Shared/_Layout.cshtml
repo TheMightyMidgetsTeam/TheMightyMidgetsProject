@@ -25,10 +25,16 @@
                     <li>@Html.ActionLink("Начало", "Index", "Home")</li>
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Създай Обява", "Create", "JobPosts")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Създай Обява", "Create", "JobPosts")</li>
+                    }
                     <li>@Html.ActionLink("Списък обяви", "Index", "JobPosts")</li>
-                    <li>@Html.ActionLink("Градове", "Index", "Cities")</li>
-                    <li>@Html.ActionLink("Категории", "Index", "Categories")</li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Градове", "Index", "Cities")</li>
+                        <li>@Html.ActionLink("Категории", "Index", "Categories")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

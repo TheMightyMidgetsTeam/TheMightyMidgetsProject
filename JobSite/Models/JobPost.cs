@@ -8,6 +8,12 @@ namespace JobSite.Models
 {
     public class JobPost
     {
+        private DateTime expireDate;
+        public JobPost()
+        {
+            PublishDate = DateTime.Now;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -19,12 +25,29 @@ namespace JobSite.Models
         public string Heading { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]        
+        [DataType(DataType.Date)]
         public DateTime PublishDate { get; set; }
 
-        [Required]        
-        [DataType(DataType.Date)]        
-        public DateTime ExpireDate { get; set; }
+        [Required(ErrorMessage = "Моля въведи дата")]
+        [DataType(DataType.Date)]
+        public DateTime ExpireDate
+        {
+            get
+            {
+                return this.expireDate;
+            }
+            set
+            {
+                if (value < DateTime.Now)
+                {
+                    throw new ArgumentOutOfRangeException("Датата не може да бъде по-малка от днес");
+                }
+                else
+                {
+                    this.expireDate = value;
+                }
+            }
+        }
 
         [Required]
         public string Body { get; set; }

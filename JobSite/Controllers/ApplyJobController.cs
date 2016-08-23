@@ -10,6 +10,7 @@ using JobSite.Models;
 
 namespace JobSite.Controllers
 {
+    [Authorize]
     public class ApplyJobController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

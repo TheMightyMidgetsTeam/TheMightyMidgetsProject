@@ -79,3 +79,4 @@ C:\Users\eqino\Documents\TeamMightyMigets\trunk\JobSite\bin\Microsoft.Owin.Secur
 C:\Users\eqino\Documents\TeamMightyMigets\trunk\JobSite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\eqino\Documents\TeamMightyMigets\trunk\JobSite\obj\Debug\JobSite.dll
 C:\Users\eqino\Documents\TeamMightyMigets\trunk\JobSite\obj\Debug\JobSite.pdb
+C:\Users\eqino\Documents\TeamMightyMigets\trunk\JobSite\obj\Debug\JobSite.csprojResolveAssemblyReference.cache

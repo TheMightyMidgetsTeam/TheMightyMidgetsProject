@@ -62,7 +62,7 @@
                 {
                     @Html.ActionLink("Изтрий", "Delete", new { id = item.Id }) @:|
                 }   
-                @Html.ActionLink("Кандидатствай", "Index", "ApplyJob", routeValues: null, htmlAttributes: new { id = "applyJobLink" })
+                @Html.ActionLink("Кандидатствай", "Index", "ApplyJob", new { id = item.Id}, htmlAttributes: new { id = "applyJobLink" })
             }
         </td>
     </tr>

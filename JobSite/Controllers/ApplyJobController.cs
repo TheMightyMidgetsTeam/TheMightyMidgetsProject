@@ -16,7 +16,7 @@ namespace JobSite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ApplyJob
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             return View();
         }
@@ -24,10 +24,11 @@ namespace JobSite.Controllers
         // POST: ApplyJob / ApplyForJob       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Id,Phone,Message")] ApplyJob applyJob)
+        public ActionResult Index([Bind(Include = "JobPostId,Phone,Message")] ApplyJob applyJob)
         {
             if (ModelState.IsValid)
             {
+                applyJob.UserId = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
                 db.ApplayJobs.Add(applyJob);
                 applyJob.ApplyDate = DateTime.Now;
                 db.SaveChanges();

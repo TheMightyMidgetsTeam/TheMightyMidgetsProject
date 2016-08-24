@@ -54,6 +54,7 @@ namespace JobSite.Controllers
         {
             if (ModelState.IsValid)
             {
+                jobPost.UserID = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
                 db.JobPosts.Add(jobPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");

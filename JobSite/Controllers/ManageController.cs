@@ -64,6 +64,7 @@ namespace JobSite.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            ApplicationDbContext db = new ApplicationDbContext();
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
@@ -72,6 +73,8 @@ namespace JobSite.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+            var a = Convert.ToBase64String(db.Users.FirstOrDefault(x => x.Id == userId).Photo);
+            ViewBag.Photo = String.Format("data:image/gif;base64,{0}", a);
             return View(model);
         }
 

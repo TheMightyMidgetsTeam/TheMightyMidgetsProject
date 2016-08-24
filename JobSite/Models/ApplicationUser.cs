@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Web;
+using System.Drawing;
+using System.IO;
 
 namespace JobSite.Models
 {
@@ -59,6 +61,13 @@ namespace JobSite.Models
 
             }
 
+        }
+        public Image GetImage()
+        {
+
+            MemoryStream ms = new MemoryStream(this.Photo);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
         }
     }
 }

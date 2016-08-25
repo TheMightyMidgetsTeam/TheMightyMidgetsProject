@@ -12,5 +12,11 @@ namespace JobSite.Models
         [StringLength(30)]
         public string CityName { get; set; }
 
+        public override string ToString()
+        {
+            return this.CityName;
+        }
+
     }
+
 }

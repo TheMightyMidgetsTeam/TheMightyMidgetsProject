@@ -33,7 +33,11 @@ namespace JobSite.Models
         public virtual ICollection<File> Files { get; set; }
         public static void AddPhotoToUser(HttpPostedFileBase upload, ApplicationUser user)
         {
-            user.AddFileToUser(upload, FileType.Photo);
+            if (upload.ContentType.Contains("image"))
+            {
+                user.AddFileToUser(upload, FileType.Photo);
+            }
+
         }
         public void AddFileToUser(HttpPostedFileBase upload, FileType ft)
         {

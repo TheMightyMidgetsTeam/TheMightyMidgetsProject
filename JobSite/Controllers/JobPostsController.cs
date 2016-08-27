@@ -10,7 +10,7 @@ using JobSite.Models;
 
 namespace JobSite.Controllers
 {
-    
+
     public class JobPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,6 +20,7 @@ namespace JobSite.Controllers
         {
             return View(db.JobPosts.ToList());
         }
+
 
         // GET: JobPosts/Details/5
         public ActionResult Details(int? id)
@@ -40,8 +41,16 @@ namespace JobSite.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.CityName = new SelectList(db.Cities, "CityName", "CityName");
-            ViewBag.CategoryName = new SelectList(db.Categories, "CategoryName", "CategoryName");
+            var db = new ApplicationDbContext();
+            ViewBag.CityName = new SelectList(db.Cities, "Id", "CityName");
+            //ViewBag.CategoryName = new SelectList(db.Categories, "CategoryName", "CategoryName");
+            IEnumerable<SelectListItem> items = db.Categories
+              .Select(c => new SelectListItem
+              {
+                  Value = c.Id.ToString(),
+                  Text = c.CategoryName
+              });
+            ViewBag.Categories = items;
             return View();
         }
 
@@ -50,19 +59,30 @@ namespace JobSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body,City,Category")] JobPost jobPost)
+        public ActionResult Create([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body")] JobPost jobPost)
         {
             if (ModelState.IsValid)
             {
+                var cty = ValueProvider.GetValue("CityName");
+                var cat = ValueProvider.GetValue("Categories");
+                var cityID = int.Parse(cty.AttemptedValue);
+                var catID = int.Parse(cat.AttemptedValue);
+                jobPost.CityId = db.Cities.FirstOrDefault(x => x.Id == cityID);
+                jobPost.Categories = db.Categories.FirstOrDefault(x => x.Id == catID);
+
+                //jobPost.City = ValueProvider.GetValue("1");
                 jobPost.UserID = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+
+                // jobPost.City = ctyVal;
+                //  jobPost.Category = catVal;
+
                 db.JobPosts.Add(jobPost);
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CityName = new SelectList(db.Cities, "CityName", "CityName", jobPost.City);
-            ViewBag.CategoryName = new SelectList(db.Categories, "CategoryName", "CategoryName", jobPost.Category);
-            
             return View(jobPost);
         }
 

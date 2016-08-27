@@ -54,9 +54,7 @@ namespace JobSite.Models
 
         public virtual City CityId { get; set; }
 
-        public virtual Category CategoryId { get; set; }
-
-
+        public virtual Category Categories { get; set; }
 
     }
 }

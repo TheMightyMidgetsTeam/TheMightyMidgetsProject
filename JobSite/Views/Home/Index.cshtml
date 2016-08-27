@@ -7,11 +7,18 @@
 
 <h1>ПО СЕКТОР</h1>
 <section class="row">
-    @foreach (var jobPost in Model)
+    @foreach (var d in ViewBag.Category)
     {
         <article class="form-control-static col-md-6">
-            <a href="#" class="title">@jobPost.Heading</a>            
         </article>
     }
+
 </section>
 <h1>ОБЯВИ ПО ГРАД</h1>
+
+@foreach (var d in ViewBag.City)
+{
+    <article class="form-control-static col-md-6">
+        <a href="#" class="title">@d.Key.CityName @d.Value</a>
+    </article>
+}

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobSite.Models;
+using PagedList;
 
 namespace JobSite.Controllers
 {
@@ -16,9 +17,15 @@ namespace JobSite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: JobPosts
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.JobPosts.ToList());
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(db.JobPosts.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
         }
 
 

@@ -16,10 +16,11 @@
 
 </section>
 <h1>ОБЯВИ ПО ГРАД</h1>
-
-@foreach (var d in ViewBag.City)
-{
-    <article class="form-control-static col-md-6">
-        <a href="#" class="title">@d.Key.CityName @d.Value</a>
-    </article>
-}
+<section class="row">
+    @foreach (var d in ViewBag.City)
+    {
+        <article class="form-control-static col-md-6">
+            <a href="@Url.Action("Index", "JobPosts")" class="title">@d.Key.CityName @d.Value</a>
+        </article>
+    }
+</section>

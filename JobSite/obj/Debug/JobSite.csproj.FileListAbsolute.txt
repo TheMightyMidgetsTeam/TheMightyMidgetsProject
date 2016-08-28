@@ -325,3 +325,7 @@ C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\Micr
 C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\obj\Debug\JobSite.csprojResolveAssemblyReference.cache
 C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\obj\Debug\JobSite.dll
 C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\obj\Debug\JobSite.pdb
+C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\PagedList.dll
+C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\PagedList.Mvc.dll
+C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\PagedList.xml
+C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\PagedList.Mvc.xml

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<JobSite.Models.JobPost>
+﻿@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@model PagedList.IPagedList<JobSite.Models.JobPost>
 
 @{
     ViewBag.Title = "Списък Обяви";
@@ -29,7 +31,9 @@
         <th>
             @Html.DisplayName("Категория")
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("Действия")
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -48,10 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Body)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.City)
+                @Html.DisplayFor(modelItem => item.City.CityName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category)
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
                 @Html.ActionLink("Детайли", "Details", new { id = item.Id })
@@ -69,3 +73,8 @@
         </tr>
     }
 </table>
+<br />
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) от @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

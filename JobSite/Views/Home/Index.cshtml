@@ -2,15 +2,13 @@
     ViewBag.Title = "Начална Страница";
 }
 
-@model List<JobSite.Models.JobPost>
-
-
 <h1>ПО СЕКТОР</h1>
 <section class="row">
     @foreach (var d in ViewBag.Category)
     {
         <article class="form-control-static col-md-6">
-            <a href="#" class="title">@d.Key.CategoryName @d.Value</a>
+            @Html.ActionLink((string)d.Key.CategoryName + " " + (string)d.Value.ToString(), "CategoryList","JobPosts", null, null, null, new { name = d.Key.CategoryName },null)
+
         </article>
     }
 

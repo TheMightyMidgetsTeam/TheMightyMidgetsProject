@@ -25,9 +25,33 @@ namespace JobSite.Controllers
             }
             int pageSize = 3;
             int pageNumber = (page ?? 1);
+            ViewBag.Action = "Index";
             return View(db.JobPosts.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult CategoryList(string name, int? page)
+        {
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            var tempVal = db.JobPosts.ToList();
+            var returnVAlue = new List<JobPost>();
+            foreach (var item in tempVal)
+            {
+                if (item.Category.CategoryName.Equals(name))
+                {
+                    returnVAlue.Add(item);
+                }
+            }
+            ViewBag.Action = "CategoryList";
+            ViewBag.RouteValues = name;
+
+            return View("Index",returnVAlue.ToPagedList(pageNumber, pageSize));
+
+        }
 
         // GET: JobPosts/Details/5
         public ActionResult Details(int? id)
@@ -50,7 +74,6 @@ namespace JobSite.Controllers
         {
             var db = new ApplicationDbContext();
             ViewBag.CityName = new SelectList(db.Cities, "Id", "CityName");
-            //ViewBag.CategoryName = new SelectList(db.Categories, "CategoryName", "CategoryName");
             IEnumerable<SelectListItem> items = db.Categories
               .Select(c => new SelectListItem
               {

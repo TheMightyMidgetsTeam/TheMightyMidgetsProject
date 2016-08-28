@@ -9,7 +9,7 @@ namespace JobSite.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(50)]
         public string CityName { get; set; }
 
         public override string ToString()

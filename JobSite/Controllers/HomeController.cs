@@ -32,22 +32,9 @@ namespace JobSite.Controllers
             }
             ViewBag.Category = catDic;
             ViewBag.City = ctytDic;
-            return View(jobPosts.ToList());
+            return View();
         }
-        public ActionResult CategoryList(string name)
-        {
-            var tempVal = db.JobPosts.ToList();
-            var returnVAlue = new List<JobPost>();
-            foreach (var item in tempVal)
-            {
-                if (item.Category.CategoryName.Equals(name))
-                {
-                    returnVAlue.Add(item);
-                }
-            }
 
-            return View(returnVAlue);
-        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

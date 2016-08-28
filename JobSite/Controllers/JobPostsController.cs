@@ -50,7 +50,29 @@ namespace JobSite.Controllers
             ViewBag.RouteValues = name;
 
             return View("Index",returnVAlue.ToPagedList(pageNumber, pageSize));
+        }
 
+        public ActionResult CityList(string name, int? page)
+        {
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            var tempVal = db.JobPosts.ToList();
+            var returnVAlue = new List<JobPost>();
+            foreach (var item in tempVal)
+            {
+                if (item.City.CityName.Equals(name))
+                {
+                    returnVAlue.Add(item);
+                }
+            }
+            ViewBag.Action = "CityList";
+            ViewBag.RouteValues = name;
+
+            return View("Index", returnVAlue.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: JobPosts/Details/5

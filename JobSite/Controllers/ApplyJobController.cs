@@ -24,15 +24,22 @@ namespace JobSite.Controllers
         // POST: ApplyJob / ApplyForJob       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "JobPostId,Phone,Message")] ApplyJob applyJob)
+        public ActionResult Index([Bind(Include = "JobPostId,Phone,Message")] ApplyJob applyJob, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                applyJob.UserId = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+                ApplicationUser ap = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+                applyJob.UserId = ap;
                 db.ApplayJobs.Add(applyJob);
                 applyJob.ApplyDate = DateTime.Now;
+                var id = ValueProvider.GetValue("Id");
+                var idInt = int.Parse(id.AttemptedValue);
+                applyJob.JobPostId = db.JobPosts.FirstOrDefault(x => x.Id == idInt);
+
+                ap.AddFileToUser(upload,FileType.CV,applyJob);
+
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Jobposts");
             }
 
             return View(applyJob);

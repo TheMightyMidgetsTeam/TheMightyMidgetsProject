@@ -5,22 +5,20 @@
 }
 
 <h2>Кандидатстване</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "ApplyJob", null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" action="demo_form.asp">
-                <form action="upload.aspx" method="post" enctype="multipart/form-data">
-                    <input runat="server" type="file" name="Избор на Файл" />
-                </form>
-                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
+            <div class="col-md-10">
+                <input type="file" id="File" name="upload" />
             </div>
+            @Html.ValidationMessageFor(model => model.Files, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">

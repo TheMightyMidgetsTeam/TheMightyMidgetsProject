@@ -62,13 +62,40 @@ namespace JobSite.Models
                 {
                     this.Photo = file.Content;
                 }
+            }
+        }
+
+        public void AddFileToUser(HttpPostedFileBase upload, FileType ft, ApplyJob appJob)
+        {
+            if (upload != null && upload.ContentLength > 0)
+            {
+                var file = new File
+                {
+                    FileName = System.IO.Path.GetFileName(upload.FileName),
+                    FileType = ft,
+                    ContentType = upload.ContentType
+                };
+                using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                {
+                    file.Content = reader.ReadBytes(upload.ContentLength);
+                }
+                if (this.Files == null)
+                {
+                    this.Files = new List<File> { file };
+                }
+                else this.Files.Add(file);
+                if (appJob.Files == null)
+                {
+                    appJob.Files = new List<File> { file };
+                }
+                else appJob.Files.Add(file);
 
             }
 
         }
+
         public Image GetImage()
         {
-
             MemoryStream ms = new MemoryStream(this.Photo);
             Image returnImage = Image.FromStream(ms);
             return returnImage;

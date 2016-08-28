@@ -15,6 +15,7 @@ namespace JobSite.Models
         public byte[] Content { get; set; }
         public FileType FileType { get; set; }
         public virtual ApplicationUser Person { get; set; }
+        public virtual ApplyJob ApplyJob { get; set; }
 
     }
 }

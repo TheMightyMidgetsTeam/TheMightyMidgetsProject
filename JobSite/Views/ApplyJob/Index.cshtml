@@ -14,7 +14,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("CV-Файл", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" id="File" name="upload" />
             </div>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Телефон", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
@@ -30,16 +30,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Съобщение", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(x => x.Message, new { @class = "form-control", @rows = "10" })
                 @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Apply" class="btn btn-default" />
+                <input type="submit" value="Кандидатствай" class="btn btn-default" />
             </div>
         </div>
 
@@ -48,7 +48,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "JobPosts", routeValues: null, htmlAttributes: new { id = "jobPostsLink" })
+    @Html.ActionLink("Към списъка с обяви", "Index", "JobPosts", routeValues: null, htmlAttributes: new { id = "jobPostsLink" })
 </div>
 
 @section Scripts {

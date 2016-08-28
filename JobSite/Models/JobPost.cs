@@ -40,7 +40,7 @@ namespace JobSite.Models
             {
                 if (value < DateTime.Now)
                 {
-                    throw new ArgumentOutOfRangeException("Датата не може да бъде по-малка от днес");
+                    //throw new ArgumentOutOfRangeException("Датата не може да бъде по-малка от днес");
                 }
                 else
                 {

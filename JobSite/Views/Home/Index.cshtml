@@ -6,8 +6,9 @@
 <section class="row">
     @foreach (var d in ViewBag.Category)
     {
+        var category = d.Key.CategoryName;
         <article class="form-control-static col-md-6">
-            @Html.ActionLink((string)d.Key.CategoryName + " (" + (string)d.Value.ToString()+")", "List","JobPosts", null, null, null, new { name = d.Key.CategoryName, currentFilter = "Category" },null)
+            <a href="@Url.Content("~/JobPosts?category="+ category)" class="title">@d.Key.CategoryName (@d.Value)</a>
         </article>
     }
 
@@ -16,8 +17,9 @@
 <section class="row">
     @foreach (var d in ViewBag.City)
     {
+        var city = d.Key.CityName;
         <article class="form-control-static col-md-6">
-            @Html.ActionLink((string)d.Key.CityName + " (" + (string)d.Value.ToString()+")", "List", "JobPosts", null, null, null, new { name = d.Key.CityName, currentFilter = "City" }, null)
+            <a href="@Url.Content("~/JobPosts?city="+ city)" class="title">@d.Key.CityName (@d.Value)</a>
         </article>
     }
 </section>

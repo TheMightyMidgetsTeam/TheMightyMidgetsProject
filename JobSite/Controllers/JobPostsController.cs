@@ -17,16 +17,33 @@ namespace JobSite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: JobPosts
-        public ActionResult Index(int? page)
-        {
+        public ActionResult Index(int? page, string city,string category)
+        {            
             if (page == null)
             {
                 page = 1;
             }
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            ViewBag.Action = "Index";
-            return View(db.JobPosts.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
+
+            if (city != null)
+            {
+                var filtringByCity = from r in db.JobPosts
+                            where r.City.CityName == city
+                            select r;
+                return View(filtringByCity.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
+            }
+            if (category != null)
+            {
+                var filtringByCategory = from r in db.JobPosts
+                            where r.Category.CategoryName == category
+                            select r;
+                return View(filtringByCategory.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                return View(db.JobPosts.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
+            }
         }
 
         public ActionResult List(string name, int? page, string currentFilter)

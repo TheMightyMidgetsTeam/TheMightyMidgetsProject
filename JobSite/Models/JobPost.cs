@@ -52,9 +52,9 @@ namespace JobSite.Models
         [Required]
         public string Body { get; set; }
 
-        public virtual City CityId { get; set; }
+        public virtual City City { get; set; }
 
-        public virtual Category Categories { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

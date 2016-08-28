@@ -19,16 +19,16 @@ namespace JobSite.Controllers
             var ctytDic = new Dictionary<City, int>();
             foreach (var c in jobPosts)
             {
-                if (!catDic.ContainsKey(c.Categories))
+                if (!catDic.ContainsKey(c.Category))
                 {
-                    catDic.Add(c.Categories, 1);
+                    catDic.Add(c.Category, 1);
                 }
-                else catDic[c.Categories]++;
-                if (!ctytDic.ContainsKey(c.CityId))
+                else catDic[c.Category]++;
+                if (!ctytDic.ContainsKey(c.City))
                 {
-                    ctytDic.Add(c.CityId, 1);
+                    ctytDic.Add(c.City, 1);
                 }
-                else ctytDic[c.CityId]++;
+                else ctytDic[c.City]++;
             }
             ViewBag.Category = catDic;
             ViewBag.City = ctytDic;
@@ -40,7 +40,7 @@ namespace JobSite.Controllers
             var returnVAlue = new List<JobPost>();
             foreach (var item in tempVal)
             {
-                if (item.Categories.CategoryName.Equals(name))
+                if (item.Category.CategoryName.Equals(name))
                 {
                     returnVAlue.Add(item);
                 }

@@ -10,6 +10,7 @@
     @foreach (var d in ViewBag.Category)
     {
         <article class="form-control-static col-md-6">
+            <a href="#" class="title">@d.Key.CategoryName @d.Value</a>
         </article>
     }
 

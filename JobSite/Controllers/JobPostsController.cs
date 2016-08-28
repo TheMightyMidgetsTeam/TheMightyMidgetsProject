@@ -50,7 +50,7 @@ namespace JobSite.Controllers
                   Value = c.Id.ToString(),
                   Text = c.CategoryName
               });
-            ViewBag.Categories = items;
+            ViewBag.Category = items;
             return View();
         }
 
@@ -64,11 +64,11 @@ namespace JobSite.Controllers
             if (ModelState.IsValid)
             {
                 var cty = ValueProvider.GetValue("CityName");
-                var cat = ValueProvider.GetValue("Categories");
+                var cat = ValueProvider.GetValue("Category");
                 var cityID = int.Parse(cty.AttemptedValue);
                 var catID = int.Parse(cat.AttemptedValue);
-                jobPost.CityId = db.Cities.FirstOrDefault(x => x.Id == cityID);
-                jobPost.Categories = db.Categories.FirstOrDefault(x => x.Id == catID);
+                jobPost.City = db.Cities.FirstOrDefault(x => x.Id == cityID);
+                jobPost.Category = db.Categories.FirstOrDefault(x => x.Id == catID);
 
                 //jobPost.City = ValueProvider.GetValue("1");
                 jobPost.UserID = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);

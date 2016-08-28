@@ -36,13 +36,20 @@ namespace JobSite.Controllers
                 var idInt = int.Parse(id.AttemptedValue);
                 applyJob.JobPostId = db.JobPosts.FirstOrDefault(x => x.Id == idInt);
 
-                ap.AddFileToUser(upload,FileType.CV,applyJob);
+                ap.AddFileToUser(upload, FileType.CV, applyJob);
 
                 db.SaveChanges();
                 return RedirectToAction("Index", "Jobposts");
             }
 
             return View(applyJob);
+        }
+
+
+        public ActionResult ListCandidate()
+        {
+            return View();
+
         }
     }
 }

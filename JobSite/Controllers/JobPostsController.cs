@@ -29,7 +29,7 @@ namespace JobSite.Controllers
             return View(db.JobPosts.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult CategoryList(string name, int? page)
+        public ActionResult List(string name, int? page, string currentFilter)
         {
             if (page == null)
             {
@@ -39,41 +39,34 @@ namespace JobSite.Controllers
             int pageNumber = (page ?? 1);
             var tempVal = db.JobPosts.ToList();
             var returnVAlue = new List<JobPost>();
-            foreach (var item in tempVal)
+
+            if (currentFilter.Equals("City"))
             {
-                if (item.Category.CategoryName.Equals(name))
+                foreach (var item in tempVal)
                 {
-                    returnVAlue.Add(item);
+                    if (item.City.CityName.Equals(name))
+                    {
+                        returnVAlue.Add(item);
+                    }
                 }
             }
-            ViewBag.Action = "CategoryList";
-            ViewBag.RouteValues = name;
-
-            return View("Index",returnVAlue.ToPagedList(pageNumber, pageSize));
-        }
-
-        public ActionResult CityList(string name, int? page)
-        {
-            if (page == null)
+            if (currentFilter.Equals("Category"))
             {
-                page = 1;
-            }
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-            var tempVal = db.JobPosts.ToList();
-            var returnVAlue = new List<JobPost>();
-            foreach (var item in tempVal)
-            {
-                if (item.City.CityName.Equals(name))
+                foreach (var item in tempVal)
                 {
-                    returnVAlue.Add(item);
+                    if (item.Category.CategoryName.Equals(name))
+                    {
+                        returnVAlue.Add(item);
+                    }
                 }
             }
-            ViewBag.Action = "CityList";
+
             ViewBag.RouteValues = name;
+            ViewBag.CurrentFilter = currentFilter;
 
             return View("Index", returnVAlue.ToPagedList(pageNumber, pageSize));
         }
+
 
         // GET: JobPosts/Details/5
         public ActionResult Details(int? id)

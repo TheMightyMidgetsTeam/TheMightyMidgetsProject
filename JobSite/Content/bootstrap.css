@@ -20,7 +20,12 @@ body {
   margin: 0;
 }
 
-
+h1 {
+    background-image: url('../Images/arrow-down-icon.png');
+    padding-left: 51px;
+    background-repeat: no-repeat;
+    background-size: 44px;
+}
 
 article,
 aside,
@@ -1103,12 +1108,13 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #ffffff;
-  text-decoration: none;
+  color: rgb(21, 32, 106);
+  font-weight: bold;
+  margin-left: 5px;
 }
 a:hover,
 a:focus {
-  color: #ffffff;
+  color: rgb(21, 32, 106);
   text-decoration: underline;
 }
 a:focus {
@@ -2270,7 +2276,7 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #1c1e22;
+  border-bottom: 1px solid #1c1e22;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -2729,11 +2735,24 @@ fieldset[disabled] .radio label,
 fieldset[disabled] .checkbox label {
   cursor: not-allowed;
 }
+
 .form-control-static {
-  padding-top: 9px;
-  padding-bottom: 9px;
-  margin-bottom: 0;
-  min-height: 34px;
+    margin-left: 81px;
+    margin-right: 27px;
+    padding: 0;
+    height: 37px;
+    line-height: 37px;
+    display: inline;
+    width: 367px;
+    float: left;
+    margin-bottom: 5px;
+    min-height: 34px;
+    background-color: #ededed;
+    border-radius: 15px;
+}
+.form-control-static:hover{
+    border-bottom: 2px solid rgb(119, 0, 0);
+    background-color: lightgrey;
 }
 .form-control-static.input-lg,
 .form-control-static.input-sm {
@@ -7284,6 +7303,3 @@ a.list-group-item-danger.active:focus {
 }
 
 
-.navbar-nav li:hover{
-    box-shadow: 10px 10px 50px 20px #f89406 inset;
-}

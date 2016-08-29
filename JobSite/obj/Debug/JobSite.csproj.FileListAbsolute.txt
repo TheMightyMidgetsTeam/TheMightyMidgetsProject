@@ -329,3 +329,7 @@ C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\Page
 C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\PagedList.Mvc.dll
 C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\PagedList.xml
 C:\Users\Dell Latitude\Documents\GitHub\TheMightyMidgetsProject\JobSite\bin\PagedList.Mvc.xml
+C:\Users\Анжела\Documents\SOFTUNI АНЖЕЛА\Software Technologies\Project\trunk\JobSite\bin\PagedList.dll
+C:\Users\Анжела\Documents\SOFTUNI АНЖЕЛА\Software Technologies\Project\trunk\JobSite\bin\PagedList.Mvc.dll
+C:\Users\Анжела\Documents\SOFTUNI АНЖЕЛА\Software Technologies\Project\trunk\JobSite\bin\PagedList.xml
+C:\Users\Анжела\Documents\SOFTUNI АНЖЕЛА\Software Technologies\Project\trunk\JobSite\bin\PagedList.Mvc.xml

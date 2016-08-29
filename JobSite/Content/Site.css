@@ -33,11 +33,11 @@ textarea {
 }
 /* unvisited link */
 a:link {
-    text-decoration: none;
-    background-color: rgba(148, 149, 150, 0.93);   
+    text-decoration: none;  
 }
 
 /* mouse over link */
 a:hover {
     color: rgba(122, 5, 5, 0.88);
+    font-weight: bold;
 }

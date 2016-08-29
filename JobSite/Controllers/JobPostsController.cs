@@ -14,76 +14,51 @@ namespace JobSite.Controllers
 
     public class JobPostsController : Controller
     {
+        int PAGE_SIZE = 3;
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: JobPosts
-        public ActionResult Index(int? page, string city,string category)
-        {            
-            if (page == null)
-            {
-                page = 1;
-            }
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
-            if (city != null)
-            {
-                var filtringByCity = from r in db.JobPosts
-                            where r.City.CityName == city
-                            select r;
-                return View(filtringByCity.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
-            }
-            if (category != null)
-            {
-                var filtringByCategory = from r in db.JobPosts
-                            where r.Category.CategoryName == category
-                            select r;
-                return View(filtringByCategory.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
-            }
-            else
-            {
-                return View(db.JobPosts.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, pageSize));
-            }
-        }
-
-        public ActionResult List(string name, int? page, string currentFilter)
+        public ActionResult Index(int? page, string city, string category)
         {
             if (page == null)
             {
                 page = 1;
             }
-            int pageSize = 3;
             int pageNumber = (page ?? 1);
-            var tempVal = db.JobPosts.ToList();
-            var returnVAlue = new List<JobPost>();
-
-            if (currentFilter.Equals("City"))
+            var filtring = from r in db.JobPosts
+                           where r.ExpireDate > System.DateTime.Now
+                           select r;
+            if (city != null)
             {
-                foreach (var item in tempVal)
-                {
-                    if (item.City.CityName.Equals(name))
-                    {
-                        returnVAlue.Add(item);
-                    }
-                }
+                filtring = from r in filtring
+                           where r.City.CityName == city
+                           select r;
             }
-            if (currentFilter.Equals("Category"))
+            if (category != null)
             {
-                foreach (var item in tempVal)
-                {
-                    if (item.Category.CategoryName.Equals(name))
-                    {
-                        returnVAlue.Add(item);
-                    }
-                }
+                filtring = from r in filtring
+                           where r.Category.CategoryName == category
+                           select r;
             }
 
-            ViewBag.RouteValues = name;
-            ViewBag.CurrentFilter = currentFilter;
-
-            return View("Index", returnVAlue.ToPagedList(pageNumber, pageSize));
+            return View(filtring.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, PAGE_SIZE));
         }
 
+
+        public ActionResult ListOwn(int? page)
+        {
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageNumber = (page ?? 1);
+            var currentUser = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+            var filtring = from r in db.JobPosts
+                           where r.UserID.Id == currentUser.Id
+                           select r;
+            return View(filtring.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, PAGE_SIZE));
+        }
 
         // GET: JobPosts/Details/5
         public ActionResult Details(int? id)
@@ -131,16 +106,8 @@ namespace JobSite.Controllers
                 var catID = int.Parse(cat.AttemptedValue);
                 jobPost.City = db.Cities.FirstOrDefault(x => x.Id == cityID);
                 jobPost.Category = db.Categories.FirstOrDefault(x => x.Id == catID);
-
-                //jobPost.City = ValueProvider.GetValue("1");
                 jobPost.UserID = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
-
-                // jobPost.City = ctyVal;
-                //  jobPost.Category = catVal;
-
                 db.JobPosts.Add(jobPost);
-
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

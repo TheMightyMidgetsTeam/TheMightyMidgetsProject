@@ -46,9 +46,15 @@ namespace JobSite.Controllers
         }
 
 
-        public ActionResult ListCandidate()
+        public ActionResult ListCandidate(int id)
         {
-            return View();
+            var userList = new List<ApplicationUser>();
+            var filtring = db.ApplayJobs.Where(r => r.JobPostId.Id == id);
+            foreach (var appJ in filtring)
+            {
+                userList.Add(appJ.UserId);
+            }
+            return View(userList);
 
         }
     }

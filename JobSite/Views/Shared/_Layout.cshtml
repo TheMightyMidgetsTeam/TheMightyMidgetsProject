@@ -30,6 +30,8 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Създай Обява", "Create", "JobPosts")</li>
+                        <li>@Html.ActionLink("Мои обяви", "ListOwn", "JobPosts")</li>
+
                     }
                     <li>@Html.ActionLink("Списък Обяви", "Index", "JobPosts")</li>
                     @if (User.IsInRole("Administrator"))

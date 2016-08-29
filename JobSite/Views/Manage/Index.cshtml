@@ -1,26 +1,26 @@
 ﻿@model JobSite.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Управление на профила";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Промяна на настройките на профила</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Your photo:</dt>
+        <dt>Снимка:</dt>
         <dd>
             <img src="@ViewBag.Photo" />
             
         </dd>
-        <dt>Password:</dt>
+        <dt>Парола:</dt>
         <dd>
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink("Промени парола", "ChangePassword")
             }
             else
             {

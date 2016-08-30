@@ -54,10 +54,10 @@ namespace JobSite.Controllers
             }
             int pageNumber = (page ?? 1);
             var currentUser = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
-            var filtring = from r in db.JobPosts
+            var filtring = from r in db.JobPosts.OrderByDescending(d => d.PublishDate)
                            where r.UserID.Id == currentUser.Id
                            select r;
-            return View(filtring.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, PAGE_SIZE));
+            return View(filtring.ToPagedList(pageNumber, PAGE_SIZE));
         }
 
         // GET: JobPosts/Details/5

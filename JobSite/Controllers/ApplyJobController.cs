@@ -46,7 +46,7 @@ namespace JobSite.Controllers
         }
 
 
-        public ActionResult ListCandidate(int id)
+        public ActionResult ListCandidates(int id)
         {
             var userList = new List<ApplicationUser>();
             var filtring = db.ApplayJobs.Where(r => r.JobPostId.Id == id);

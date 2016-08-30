@@ -442,6 +442,9 @@
     <Content Include="Views\Cities\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Views\ApplyJob\Index.cshtml" />
+    <Content Include="Views\ApplyJob\ListCandidates.cshtml" />
+    <Content Include="Views\ApplyJob\ViewCandidate.cshtml" />
+    <Content Include="Views\JobPosts\ListOwn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

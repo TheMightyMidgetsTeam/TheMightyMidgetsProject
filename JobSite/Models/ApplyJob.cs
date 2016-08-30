@@ -24,10 +24,10 @@ namespace JobSite.Models
         public string Message { get; set; }
 
         //[Required]
-        public ApplicationUser UserId { get; set; }
+        public virtual ApplicationUser UserId { get; set; }
 
         //[Required]
-        public JobPost JobPostId { get; set; }
+        public virtual JobPost JobPostId { get; set; }
 
     }
 }

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<JobSite.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Списък Кандидати";
+}
+
+<h2>Списък Кандидати</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Заглавие")
+        </th>
+        <th>
+            @Html.DisplayName("Дата на публикуване")
+        </th>
+        <th>
+            @Html.DisplayName("Валидна до")
+        </th>
+        <th>
+            @Html.DisplayName("Описание")
+        </th>
+        <th>
+            @Html.DisplayName("Град")
+        </th>
+        <th>
+            @Html.DisplayName("Категория")
+        </th>
+        <th>
+            @Html.DisplayName("Действия")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Детайли", "ViewCandidate", new { id = item.Id })
+
+            </td>
+        </tr>
+    }
+</table>
+<br />

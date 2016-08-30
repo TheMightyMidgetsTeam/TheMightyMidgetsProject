@@ -1,0 +1,85 @@
+﻿@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@model PagedList.IPagedList<JobSite.Models.JobPost>
+
+@{
+    ViewBag.Title = "Списък Обяви";
+}
+
+<h2>Списък Обяви</h2>
+
+<p>
+    @Html.ActionLink("Създай Нова", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Заглавие")
+        </th>
+        <th>
+            @Html.DisplayName("Дата на публикуване")
+        </th>
+        <th>
+            @Html.DisplayName("Валидна до")
+        </th>
+        <th>
+            @Html.DisplayName("Описание")
+        </th>
+        <th>
+            @Html.DisplayName("Град")
+        </th>
+        <th>
+            @Html.DisplayName("Категория")
+        </th>
+        <th>
+            @Html.DisplayName("Действия")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heading)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpireDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Детайли", "Details", new { id = item.Id })
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @:|
+                    @Html.ActionLink("Редактирай", "Edit", new { id = item.Id }) @:|
+                if (User.IsInRole("Administrator"))
+                    {
+                        @Html.ActionLink("Изтрий", "Delete", new { id = item.Id }) @:|
+                }
+                    @Html.ActionLink("Кандидати", "ListCandidates", "ApplyJob", new { id = item.Id }, htmlAttributes: new { id = "applyJobLink" })
+                }
+            </td>
+        </tr>
+    }
+</table>
+<br />
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) от @Model.PageCount
+
+@{
+    String currentCity = Request.QueryString["city"];
+    String currentCategory = Request.QueryString["category"];
+}
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, category = currentCategory, city = currentCity }))

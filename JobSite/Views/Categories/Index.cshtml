@@ -12,9 +12,11 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
+                @Html.DisplayName("Категория")
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayName("Действия")
+            </th>
         </tr>
 
     @foreach (var item in Model) {

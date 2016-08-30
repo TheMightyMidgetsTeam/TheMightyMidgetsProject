@@ -27,14 +27,18 @@
                     <li>@Html.ActionLink("Начало", "Index", "Home")</li>
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
+                    <li>@Html.ActionLink("Списък Обяви", "Index", "JobPosts")</li>
+                    @if (User.IsInRole("Users"))
+                    {                      
+                        <li>@Html.ActionLink("Моите кандидатствания", "ListApplyJob", "JobPosts")</li>
+                    }
+                    @if (User.IsInRole("Employers"))
                     {
                         <li>@Html.ActionLink("Създай Обява", "Create", "JobPosts")</li>
-                        <li>@Html.ActionLink("Мои обяви", "ListOwn", "JobPosts")</li>
+                        <li>@Html.ActionLink("Мои Обяви", "ListOwn", "JobPosts")</li>
 
-                    }
-                    <li>@Html.ActionLink("Списък Обяви", "Index", "JobPosts")</li>
-                    @if (User.IsInRole("Administrator"))
+                    }                    
+                    @if (User.IsInRole("Administrators"))
                     {
                         <li>@Html.ActionLink("Градове", "Index", "Cities")</li>
                         <li>@Html.ActionLink("Категории", "Index", "Categories")</li>

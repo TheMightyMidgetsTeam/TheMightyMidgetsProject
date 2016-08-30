@@ -3,10 +3,10 @@
 @model PagedList.IPagedList<JobSite.Models.JobPost>
 
 @{
-    ViewBag.Title = "Списък Обяви";
+    ViewBag.Title = "Моите Обяви";
 }
 
-<h2>Списък Обяви</h2>
+<h2>Моите Обяви</h2>
 
 <p>
     @Html.ActionLink("Създай Нова", "Create")
@@ -59,16 +59,21 @@
             </td>
             <td>
                 @Html.ActionLink("Детайли", "Details", new { id = item.Id })
-                @if (User.Identity.IsAuthenticated)
-                {
-                    @:|
-                    @Html.ActionLink("Редактирай", "Edit", new { id = item.Id }) @:|
-                if (User.IsInRole("Administrator"))
+
+                @if (User.IsInRole("Employers"))
+                    {
+                        @:|
+                        @Html.ActionLink("Редактирай", "Edit", new { id = item.Id }) @:|
+                    }
+                @if (User.IsInRole("Administrators,Employers"))
                     {
                         @Html.ActionLink("Изтрий", "Delete", new { id = item.Id }) @:|
-                }
-                    @Html.ActionLink("Кандидати", "ListCandidates", "ApplyJob", new { id = item.Id }, htmlAttributes: new { id = "applyJobLink" })
-                }
+                    }
+                @if (User.IsInRole("Employers"))
+                    {
+                        @Html.ActionLink("Кандидати", "ListCandidates", "ApplyJob", new { id = item.Id }, htmlAttributes: new { id = "applyJobLink" })
+                    }
+                
             </td>
         </tr>
     }

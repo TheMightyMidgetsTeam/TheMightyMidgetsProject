@@ -1,22 +1,21 @@
 ﻿@model JobSite.Models.City
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Изтриване";
 }
 
-<h2>Delete</h2>
+<h2>Изтриване!</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>City</h4>
+<h3>Сигурни ли сте, че искате да изтриете това?</h3>
+<div>    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CityName)
+            <h3>@Html.DisplayName("Град:")</h3>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CityName)
+            <h3>@Html.DisplayFor(model => model.CityName)</h3>
         </dd>
 
     </dl>
@@ -25,8 +24,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Изтрий" class="btn btn-default" /> |
+            @Html.ActionLink("Към списъка с градове", "Index")
         </div>
     }
 </div>

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<JobSite.Models.ApplicationUser>
+﻿@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@model PagedList.IPagedList<JobSite.Models.ApplyJob>
 
 @{
     ViewBag.Title = "Списък Кандидати";
@@ -9,42 +11,50 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Заглавие")
+            @Html.DisplayName("Кандидат")
         </th>
         <th>
-            @Html.DisplayName("Дата на публикуване")
+            @Html.DisplayName("Имейл")
         </th>
         <th>
-            @Html.DisplayName("Валидна до")
+            @Html.DisplayName("Съобщение")
         </th>
         <th>
-            @Html.DisplayName("Описание")
-        </th>
-        <th>
-            @Html.DisplayName("Град")
-        </th>
-        <th>
-            @Html.DisplayName("Категория")
+            @Html.DisplayName("CV - Файл ")
         </th>
         <th>
             @Html.DisplayName("Действия")
-        </th>
+        </th>        
     </tr>
 
     @foreach (var item in Model)
-    {
+    {        
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FullName)
+                @Html.DisplayFor(modelItem => item.UserId.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.UserId.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Files)
             </td>
             <td>
                 @Html.ActionLink("Детайли", "ViewCandidate", new { id = item.Id })
-
             </td>
         </tr>
     }
 </table>
 <br />
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) от @Model.PageCount
+
+@{
+    String currentCity = Request.QueryString["city"];
+    String currentCategory = Request.QueryString["category"];
+}
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, category = currentCategory, city = currentCity }))

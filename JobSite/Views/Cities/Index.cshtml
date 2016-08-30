@@ -1,20 +1,22 @@
 ﻿@model IEnumerable<JobSite.Models.City>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Градове";
 }
 
-<h2>Index</h2>
+<h2>Градове</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Създай Нов", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CityName)
+            @Html.DisplayName("Градове")
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("Действия")
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -23,9 +25,9 @@
             @Html.DisplayFor(modelItem => item.CityName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Редактирай", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Детайли", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Изтрий", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

@@ -141,7 +141,14 @@ namespace JobSite.Controllers
         [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body,City,Category")] JobPost jobPost)
         {
-            if (ModelState.IsValid)
+            var currentUser = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+            jobPost.UserID = db.JobPosts.FirstOrDefault(x => x.Id == jobPost.Id).UserID;
+         
+            var jobPostCreator = jobPost.UserID;
+
+            if (ModelState.IsValid && currentUser.Id.Equals(jobPostCreator.Id))
+
+                if (ModelState.IsValid)
             {
                 db.Entry(jobPost).State = EntityState.Modified;
                 db.SaveChanges();

@@ -73,8 +73,19 @@ namespace JobSite.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
-            var a = Convert.ToBase64String(db.Users.FirstOrDefault(x => x.Id == userId).Photo);
-            ViewBag.Photo = String.Format("data:image/gif;base64,{0}", a);
+            var user = db.Users.FirstOrDefault(x => x.Id == userId);
+            var userRole = User.IsInRole("Administrator") == true ? "Administrator" : "User";
+
+            ViewBag.Name = user.FullName;
+            ViewBag.Email = user.Email;
+            ViewBag.Username = user.UserName;
+            ViewBag.UserRole = userRole;
+            if (user.Photo != null)
+            {
+                var photo = Convert.ToBase64String(user.Photo);
+                ViewBag.Photo = String.Format("data:image/gif;base64,{0}", photo);
+            }            
+            
             return View(model);
         }
 

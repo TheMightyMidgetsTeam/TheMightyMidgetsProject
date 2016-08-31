@@ -119,6 +119,7 @@ namespace JobSite.Controllers
         [Authorize]
         public ActionResult Edit(int? id)
         {
+            ViewBag.CityNameEdit = new SelectList(db.Cities, "Id", "CityName");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

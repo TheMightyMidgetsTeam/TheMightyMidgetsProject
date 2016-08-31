@@ -120,7 +120,7 @@ namespace JobSite.Controllers
         [Authorize]
         public ActionResult Edit(int? id)
         {
-
+            ViewBag.CityNameEdit = new SelectList(db.Cities, "Id", "CityName");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -142,11 +142,12 @@ namespace JobSite.Controllers
         public ActionResult Edit([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body,City,Category")] JobPost jobPost)
         {
             var currentUser = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+            ApplicationDbContext asd = new ApplicationDbContext();
 
-            var anotherDb = new ApplicationDbContext();
-            var jobPostCreator = anotherDb.JobPosts.FirstOrDefault(x => x.Id == jobPost.Id).UserID.Id;
 
-            if (ModelState.IsValid && currentUser.Id.Equals(jobPostCreator))
+            if (ModelState.IsValid)
+
+                if (ModelState.IsValid)
             {
                 db.Entry(jobPost).State = EntityState.Modified;
                 db.SaveChanges();
@@ -156,7 +157,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -174,7 +175,7 @@ namespace JobSite.Controllers
         // POST: JobPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             JobPost jobPost = db.JobPosts.Find(id);

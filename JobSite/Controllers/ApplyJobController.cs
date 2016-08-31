@@ -72,11 +72,12 @@ namespace JobSite.Controllers
                 var photoText = Convert.ToBase64String(JobSite.Models.File.imageToByteArray(photo));
                 ViewBag.Photo = String.Format("data:image/jpg;base64,{0}", photoText);
             }
-            //if (file != null)
-            //{
-            //    var cv = Convert.ToBase64String(file.Content);
-            //    ViewBag.CV = String.Format("data:image/gif;base64,{0}", cv);
-            //}
+            if (file != null)
+            {
+
+                ViewBag.CV = file;
+            }
+            
 
             return View("ViewCandidate", currentUser);
         }
@@ -97,5 +98,12 @@ namespace JobSite.Controllers
 
             return View();
         }
+
+        public FileContentResult Download(int fileId)
+        {
+            File f = db.Files.FirstOrDefault(x => x.Id == fileId);
+            return new FileContentResult(f.Content, f.ContentType);
+        }
+
     }
 }

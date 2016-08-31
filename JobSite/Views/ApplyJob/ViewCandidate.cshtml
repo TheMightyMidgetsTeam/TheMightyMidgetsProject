@@ -50,6 +50,10 @@
         <dd>
             @ViewBag.ApplyJob.Message
         </dd>
+        <dd>
+            @{string filenName = ViewBag.CV.FileName; }
+            @Html.ActionLink(filenName, "Download", new { fileId = ViewBag.CV.Id })
+        </dd>
 
     </dl>
 </div>

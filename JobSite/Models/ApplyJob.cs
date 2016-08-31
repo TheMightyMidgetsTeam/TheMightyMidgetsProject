@@ -13,7 +13,7 @@ namespace JobSite.Models
         public DateTime ApplyDate { get; set; }
 
         //[Required]
-        public virtual System.Collections.Generic.ICollection<File> Files { get; set; }
+        public virtual File File { get; set; }
 
         [Required]
         [StringLength(20)]
@@ -28,6 +28,5 @@ namespace JobSite.Models
 
         //[Required]
         public virtual JobPost JobPostId { get; set; }
-
     }
 }

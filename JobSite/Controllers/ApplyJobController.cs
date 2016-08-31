@@ -50,6 +50,7 @@ namespace JobSite.Controllers
         {
             var userList = new List<ApplicationUser>();
             var filtring = db.ApplayJobs.Where(r => r.JobPostId.Id == id);
+            ViewBag.JobPost = id;
             foreach (var appJ in filtring)
             {
                 userList.Add(appJ.UserId);
@@ -58,17 +59,31 @@ namespace JobSite.Controllers
 
         }
 
-        public ActionResult ViewCandidate(string id)
+        public ActionResult ViewCandidate(string userId, int jobpostId)
         {
-            var user = db.Users.FirstOrDefault(x => x.Id == id);
-            var file = db.Files.FirstOrDefault(x => x.Person.Id == id);
-            if (file != null && file.Content != null)
+            //picture
+            //name phone 
+            //email
+            //message
+            //status
+            var currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            var photo = currentUser.GetImage();
+            var appJob = db.ApplayJobs.OrderByDescending(x => x.ApplyDate).FirstOrDefault(x => x.UserId.Id == userId && x.JobPostId.Id == jobpostId);
+
+            ViewBag.ApplyJob = appJob;
+            var file = appJob.File;
+            if (photo != null)
+            {
+                var photoText = Convert.ToBase64String(JobSite.Models.File.imageToByteArray(photo));
+                ViewBag.Photo = String.Format("data:image/gif;base64,{0}", photoText);
+            }
+            if (file != null)
             {
                 var cv = Convert.ToBase64String(file.Content);
                 ViewBag.CV = String.Format("data:image/gif;base64,{0}", cv);
             }
 
-            return View(user);
+            return View("ViewCandidate", currentUser);
         }
 
         public ActionResult ListAppliedJobs()

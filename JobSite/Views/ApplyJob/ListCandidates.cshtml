@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<JobSite.Models.ApplicationUser>
+
 @{
     ViewBag.Title = "Списък Кандидати";
 }
@@ -29,6 +30,7 @@
             @Html.DisplayName("Действия")
         </th>
     </tr>
+
     @foreach (var item in Model)
     {
         <tr>
@@ -39,7 +41,8 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Детайли", "ViewCandidate", new { id = item.Id })
+                @Html.ActionLink("Детайли", "ViewCandidate", new { userId = item.Id, jobpostId = ViewBag.JobPost })
+
             </td>
         </tr>
     }

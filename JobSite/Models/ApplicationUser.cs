@@ -84,11 +84,7 @@ namespace JobSite.Models
                     this.Files = new List<File> { file };
                 }
                 else this.Files.Add(file);
-                if (appJob.Files == null)
-                {
-                    appJob.Files = new List<File> { file };
-                }
-                else appJob.Files.Add(file);
+                appJob.File = file;
 
             }
 
@@ -96,6 +92,10 @@ namespace JobSite.Models
 
         public Image GetImage()
         {
+            if (this.Photo == null)
+            {
+                return null;
+            }
             MemoryStream ms = new MemoryStream(this.Photo);
             Image returnImage = Image.FromStream(ms);
             return returnImage;

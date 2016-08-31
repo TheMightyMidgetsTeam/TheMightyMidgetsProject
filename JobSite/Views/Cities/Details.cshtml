@@ -1,17 +1,16 @@
 ﻿@model JobSite.Models.City
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Детайли";
 }
 
-<h2>Details</h2>
+<h2>Детайли</h2>
 
 <div>
-    <h4>City</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CityName)
+            @Html.DisplayName("Град")
         </dt>
 
         <dd>
@@ -21,6 +20,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Редактирай", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Към списъка с градове", "Index")
 </p>

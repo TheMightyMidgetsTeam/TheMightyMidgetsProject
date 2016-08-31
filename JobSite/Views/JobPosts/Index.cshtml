@@ -56,7 +56,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     @:|
-                if (User.IsInRole("Administrator"))
+                if (User.IsInRole("Administrators"))
                     {
                         @Html.ActionLink("Изтрий", "Delete", new { id = item.Id }) @:|
                 }

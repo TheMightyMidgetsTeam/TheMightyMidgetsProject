@@ -63,7 +63,7 @@
                 {
                     @:|
                     @Html.ActionLink("Редактирай", "Edit", new { id = item.Id }) @:|
-                if (User.IsInRole("Administrator"))
+                if (User.IsInRole("Administrators"))
                     {
                         @Html.ActionLink("Изтрий", "Delete", new { id = item.Id }) @:|
                 }

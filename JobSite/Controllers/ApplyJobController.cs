@@ -57,5 +57,12 @@ namespace JobSite.Controllers
             return View(userList);
 
         }
+
+        public ActionResult ViewCandidate (string id)
+        {
+            var user = db.Users.FirstOrDefault(x => x.Id == id);
+
+            return View(user);
+        }
     }
 }

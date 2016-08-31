@@ -56,5 +56,7 @@ namespace JobSite.Models
 
         public virtual Category Category { get; set; }
 
+        public bool IsActive { get; set; }
+
     }
 }

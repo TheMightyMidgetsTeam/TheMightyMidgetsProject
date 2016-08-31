@@ -27,7 +27,7 @@ namespace JobSite.Controllers
             }
             int pageNumber = (page ?? 1);
             var filtring = from r in db.JobPosts
-                           where r.ExpireDate > System.DateTime.Now
+                           where r.ExpireDate > System.DateTime.Now && r.IsActive == true
                            select r;
             if (city != null)
             {
@@ -107,6 +107,7 @@ namespace JobSite.Controllers
                 jobPost.City = db.Cities.FirstOrDefault(x => x.Id == cityID);
                 jobPost.Category = db.Categories.FirstOrDefault(x => x.Id == catID);
                 jobPost.UserID = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+                jobPost.IsActive = true;
                 db.JobPosts.Add(jobPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -172,7 +173,7 @@ namespace JobSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             JobPost jobPost = db.JobPosts.Find(id);
-            db.JobPosts.Remove(jobPost);
+            jobPost.IsActive = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

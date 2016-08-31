@@ -55,7 +55,7 @@ namespace JobSite.Controllers
             {
                 userList.Add(appJ.UserId);
             }
-            return View(userList);
+            return View(filtring);
 
         }
 
@@ -74,7 +74,6 @@ namespace JobSite.Controllers
             }
             if (file != null)
             {
-
                 ViewBag.CV = file;
             }
             

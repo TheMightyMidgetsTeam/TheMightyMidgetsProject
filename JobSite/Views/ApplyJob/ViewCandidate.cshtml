@@ -46,14 +46,14 @@
         <dd>
             @ViewBag.ApplyJob.Message
         </dd>
-        <dt>CV:</dt>
-        <dd>
-            @ViewBag.ApplyJob.Message
-        </dd>
-        <dd>
-            @{string filenName = ViewBag.CV.FileName; }
-            @Html.ActionLink(filenName, "Download", new { fileId = ViewBag.CV.Id })
-        </dd>
+        @if (ViewBag.CV != null)
+            {
+            @:<dt>CV:</dt>
+            @:<dd>
+            string filenName = ViewBag.CV.FileName;
+            Html.ActionLink(filenName, "Download", new { fileId = ViewBag.CV.Id });
+        }
+    </dd>
 
-    </dl>
+</dl>
 </div>

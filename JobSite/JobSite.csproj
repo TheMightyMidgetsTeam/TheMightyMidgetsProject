@@ -446,7 +446,6 @@
     <Content Include="Views\ApplyJob\ListCandidates.cshtml" />
     <Content Include="Views\ApplyJob\ViewCandidate.cshtml" />
     <Content Include="Views\JobPosts\ListOwn.cshtml" />
-    <Content Include="Views\JobPosts\ListApplyJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

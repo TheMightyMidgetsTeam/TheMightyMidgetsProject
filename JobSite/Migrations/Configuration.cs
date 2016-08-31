@@ -36,73 +36,15 @@ namespace JobSite.Migrations
             //    ApplicationUserManager qq = new ApplicationUserManager();
 
             //    CreateUser(context, "admin@gmail.com", "123", "System Administrator");
-            //    CreateUser(context, "dancho@gmail.com", "123", "Dancho Ivanov");
-            //    CreateUser(context, "vasil@gmail.com", "123", "Vasil Nikolov");
-            //    CreateUser(context, "petyo@gmail.com", "123", "Petyo Lazarov");
-            //    CreateUser(context, "anjela@gmail.com", "123", "Anjela Aleksandrova");
+            //    CreateUser(context, "pesho@gmail.com", "123", "Peter Ivanov");
+            //    CreateUser(context, "merry@gmail.com", "123", "Maria Petrova");
+            //    CreateUser(context, "geshu@gmail.com", "123", "George Petrov");
 
             //    CreateRole(context, "Administrators");
-            //    CreateRole(context, "Employers");
-            //    CreateRole(context, "Users");
             //    AddUserToRole(context, "admin@gmail.com", "Administrators");
-            //    AddUserToRole(context, "dancho@gmail.com", "Administrators");
-            //    AddUserToRole(context, "vasil@gmail.com", "Administrators");
-            //    AddUserToRole(context, "petyo@gmail.com", "Administrators");
-            //    AddUserToRole(context, "anjela@gmail.com", "Administrators");
 
-            //    context.SaveChanges();
-            //}
+            //    CreatePost(context,
+            //        title: "Work Begins on HTML5.1",
         }
-        //private void CreateUser(ApplicationDbContext context,
-        //    string email, string password, string fullName)
-        //{
-        //    var userManager = new UserManager<ApplicationUser>(
-        //        new UserStore<ApplicationUser>(context));
-        //    userManager.PasswordValidator = new PasswordValidator
-        //    {
-        //        RequiredLength = 1,
-        //        RequireNonLetterOrDigit = false,
-        //        RequireDigit = false,
-        //        RequireLowercase = false,
-        //        RequireUppercase = false,
-        //    };
-
-        //    var user = new ApplicationUser
-        //    {
-        //        UserName = email,
-        //        Email = email,
-        //        FullName = fullName
-        //    };
-
-        //    var userCreateResult = userManager.Create(user, password);
-        //    if (!userCreateResult.Succeeded)
-        //    {
-        //        throw new Exception(string.Join("; ", userCreateResult.Errors));
-        //    }
-        //}
-
-        //private void CreateRole(ApplicationDbContext context, string roleName)
-        //{
-        //    var roleManager = new RoleManager<IdentityRole>(
-        //        new RoleStore<IdentityRole>(context));
-        //    var roleCreateResult = roleManager.Create(new IdentityRole(roleName));
-        //    if (!roleCreateResult.Succeeded)
-        //    {
-        //        throw new Exception(string.Join("; ", roleCreateResult.Errors));
-        //    }
-        //}
-
-        //private void AddUserToRole(ApplicationDbContext context, string userName, string roleName)
-        //{
-        //    var user = context.Users.First(u => u.UserName == userName);
-        //    var userManager = new UserManager<ApplicationUser>(
-        //        new UserStore<ApplicationUser>(context));
-        //    var addAdminRoleResult = userManager.AddToRole(user.Id, roleName);
-        //    if (!addAdminRoleResult.Succeeded)
-        //    {
-        //        throw new Exception(string.Join("; ", addAdminRoleResult.Errors));
-        //    }
-        //}
-
     }
 }

@@ -45,8 +45,7 @@ namespace JobSite.Controllers
             return View(filtring.OrderByDescending(d => d.PublishDate).ToPagedList(pageNumber, PAGE_SIZE));
         }
 
-        // GET: ListOwn
-        [Authorize(Roles = "Employers")]
+
         public ActionResult ListOwn(int? page)
         {
             if (page == null)
@@ -57,21 +56,6 @@ namespace JobSite.Controllers
             var currentUser = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
             var filtring = from r in db.JobPosts.OrderByDescending(d => d.PublishDate)
                            where r.UserID.Id == currentUser.Id
-                           select r;
-            return View(filtring.ToPagedList(pageNumber, PAGE_SIZE));
-        }
-        // GET: ListApplyJob
-        [Authorize(Roles = "Users")]
-        public ActionResult ListApplyJob(int? page)
-        {
-            if (page == null)
-            {
-                page = 1;
-            }
-            int pageNumber = (page ?? 1);
-            var currentUser = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
-            var filtring = from r in db.ApplayJobs.OrderByDescending(d => d.ApplyDate)
-                           where r.UserId.Id == currentUser.Id
                            select r;
             return View(filtring.ToPagedList(pageNumber, PAGE_SIZE));
         }
@@ -92,7 +76,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Create
-        [Authorize(Roles = "Employers")]
+        [Authorize]
         public ActionResult Create()
         {
             var db = new ApplicationDbContext();
@@ -111,7 +95,6 @@ namespace JobSite.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Employers")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body")] JobPost jobPost)
         {
@@ -133,7 +116,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Edit/5
-        [Authorize(Roles = "Employers")]
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -153,7 +136,7 @@ namespace JobSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Employers")]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Heading,PublishDate,ExpireDate,Body,City,Category")] JobPost jobPost)
         {
             if (ModelState.IsValid)
@@ -166,7 +149,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Delete/5
-        [Authorize(Roles = "Administrators,Employers")]
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -184,7 +167,7 @@ namespace JobSite.Controllers
         // POST: JobPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators,Employers")]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             JobPost jobPost = db.JobPosts.Find(id);

@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobSite.Models;
-using PagedList;
 
 namespace JobSite.Controllers
 {
@@ -17,7 +16,6 @@ namespace JobSite.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ApplyJob
-        [Authorize(Roles = "Users")]
         public ActionResult Index(int? id)
         {
             return View();
@@ -25,7 +23,6 @@ namespace JobSite.Controllers
 
         // POST: ApplyJob / ApplyForJob       
         [HttpPost]
-        [Authorize(Roles = "Users")]
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "JobPostId,Phone,Message")] ApplyJob applyJob, HttpPostedFileBase upload)
         {
@@ -47,18 +44,18 @@ namespace JobSite.Controllers
 
             return View(applyJob);
         }
-               
-        public ActionResult ListCandidates(int? page)
-        {           
-            int PAGE_SIZE = 3;
-            if (page == null)
+
+
+        public ActionResult ListCandidates(int id)
+        {
+            var userList = new List<ApplicationUser>();
+            var filtring = db.ApplayJobs.Where(r => r.JobPostId.Id == id);
+            foreach (var appJ in filtring)
             {
-                page = 1;
+                userList.Add(appJ.UserId);
             }
-            int pageNumber = (page ?? 1);
-            var filtring = from r in db.ApplayJobs                                                   
-                           select r;
-            return View(filtring.OrderByDescending(d => d.ApplyDate).ToPagedList(pageNumber, PAGE_SIZE));
+            return View(userList);
+
         }
     }
 }

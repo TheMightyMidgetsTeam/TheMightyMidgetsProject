@@ -8,10 +8,9 @@
 
 <h2>Списък Обяви</h2>
 
-<p>@if (User.IsInRole("Employers"))
-    {
-        @Html.ActionLink("Създай Нова", "Create")
-    }</p>
+<p>
+    @Html.ActionLink("Създай Нова", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -53,15 +52,15 @@
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
-                @Html.ActionLink("Детайли", "Details", new { id = item.Id })                
-                @if (User.IsInRole("Administrators"))
-                {    
-                    @:|                 
-                    @Html.ActionLink("Изтрий", "Delete", new { id = item.Id })
-                }
-                @if (User.IsInRole("Users"))
+                @Html.ActionLink("Детайли", "Details", new { id = item.Id })
+                @if (User.Identity.IsAuthenticated)
                 {
                     @:|
+                    @Html.ActionLink("Редактирай", "Edit", new { id = item.Id }) @:|
+                if (User.IsInRole("Administrator"))
+                    {
+                        @Html.ActionLink("Изтрий", "Delete", new { id = item.Id }) @:|
+                }
                     @Html.ActionLink("Кандидатствай", "Index", "ApplyJob", new { id = item.Id }, htmlAttributes: new { id = "applyJobLink" })
                 }
             </td>

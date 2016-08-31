@@ -61,11 +61,6 @@ namespace JobSite.Controllers
 
         public ActionResult ViewCandidate(string userId, int jobpostId)
         {
-            //picture
-            //name phone 
-            //email
-            //message
-            //status
             var currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
             var photo = currentUser.GetImage();
             var appJob = db.ApplayJobs.OrderByDescending(x => x.ApplyDate).FirstOrDefault(x => x.UserId.Id == userId && x.JobPostId.Id == jobpostId);
@@ -75,13 +70,13 @@ namespace JobSite.Controllers
             if (photo != null)
             {
                 var photoText = Convert.ToBase64String(JobSite.Models.File.imageToByteArray(photo));
-                ViewBag.Photo = String.Format("data:image/gif;base64,{0}", photoText);
+                ViewBag.Photo = String.Format("data:image/jpg;base64,{0}", photoText);
             }
-            if (file != null)
-            {
-                var cv = Convert.ToBase64String(file.Content);
-                ViewBag.CV = String.Format("data:image/gif;base64,{0}", cv);
-            }
+            //if (file != null)
+            //{
+            //    var cv = Convert.ToBase64String(file.Content);
+            //    ViewBag.CV = String.Format("data:image/gif;base64,{0}", cv);
+            //}
 
             return View("ViewCandidate", currentUser);
         }

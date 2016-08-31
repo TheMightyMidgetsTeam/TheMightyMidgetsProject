@@ -157,7 +157,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Delete/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -175,7 +175,7 @@ namespace JobSite.Controllers
         // POST: JobPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrators")]
         public ActionResult DeleteConfirmed(int id)
         {
             JobPost jobPost = db.JobPosts.Find(id);

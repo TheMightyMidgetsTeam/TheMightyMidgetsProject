@@ -33,7 +33,7 @@
 
                     }
                     <li>@Html.ActionLink("Списък Обяви", "Index", "JobPosts")</li>
-                    @if (User.IsInRole("Administrator"))
+                    @if (User.IsInRole("Administrators"))
                     {
                         <li>@Html.ActionLink("Градове", "Index", "Cities")</li>
                         <li>@Html.ActionLink("Категории", "Index", "Categories")</li>

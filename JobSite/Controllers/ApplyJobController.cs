@@ -58,9 +58,15 @@ namespace JobSite.Controllers
 
         }
 
-        public ActionResult ViewCandidate (string id)
+        public ActionResult ViewCandidate(string id)
         {
             var user = db.Users.FirstOrDefault(x => x.Id == id);
+            var file = db.Files.FirstOrDefault(x => x.Person.Id == id);
+            if (file != null && file.Content != null)
+            {
+                var cv = Convert.ToBase64String(file.Content);
+                ViewBag.CV = String.Format("data:image/gif;base64,{0}", cv);
+            }
 
             return View(user);
         }

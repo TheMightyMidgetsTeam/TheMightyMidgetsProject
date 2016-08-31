@@ -12,7 +12,14 @@
     <dl class="dl-horizontal">
         <dt>Снимка:</dt>
         <dd>
-            <img src="@ViewBag.Photo" />
+            @if (ViewBag.Photo != null)
+            {
+                <img src="@ViewBag.Photo" />
+            }
+            else
+            {
+                @:Няма снимка
+            }
         </dd>
         <dt>Потребителско име:</dt>
         <dd>
@@ -26,7 +33,7 @@
         <dd>
             @ViewBag.Email
         </dd>
-        <dt>asd</dt>
+        <dt>Роля:</dt>
         <dd>
             @ViewBag.UserRole
         </dd>

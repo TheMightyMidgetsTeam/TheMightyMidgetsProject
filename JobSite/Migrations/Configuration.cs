@@ -24,8 +24,8 @@
                 CreateUser(context, "pesho@gmail.com", "123", "Peter Ivanov");
                 CreateUser(context, "merry@gmail.com", "123", "Maria Petrova");
                 CreateUser(context, "geshu@gmail.com", "123", "George Petrov");
-                CreateRole(context, "Administrators");
-                AddUserToRole(context, "admin@gmail.com", "Administrators");
+                CreateRole(context, "Administrator");
+                AddUserToRole(context, "admin@gmail.com", "Administrator");
                 context.SaveChanges();
             }
             if (!context.Cities.Any())

@@ -13,7 +13,7 @@ namespace JobSite.Controllers
 
         public ActionResult Index()
         {
-            var jobPosts = db.JobPosts.Where(p => p.ExpireDate > System.DateTime.Now).OrderByDescending(x=>x.PublishDate).ToList();
+            var jobPosts = db.JobPosts.Where(p => p.ExpireDate > System.DateTime.Now && p.IsActive).OrderByDescending(x=>x.PublishDate).ToList();
            // var jobPosts = db.JobPosts.OrderByDescending(p => p.ExpireDate > System.DateTime.Now).ToList();
             var cat = db.Categories.OrderByDescending(p => p.CategoryName).ToArray();
             var catDic = new Dictionary<Category, int>();

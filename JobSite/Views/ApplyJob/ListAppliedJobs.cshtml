@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<JobSite.Models.ApplicationUser>
-
+@using JobSite.Classes;
 @{
     ViewBag.Title = "Списък Кандидати";
 }
@@ -44,7 +44,7 @@
                 @item.ExpireDate
             </td>
             <td>
-                @item.Body
+                @Utils.CutText(item.Body, 200)
             </td>
             <td>
                 @item.City.CityName

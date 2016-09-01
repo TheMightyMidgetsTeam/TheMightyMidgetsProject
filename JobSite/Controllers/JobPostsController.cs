@@ -55,7 +55,7 @@ namespace JobSite.Controllers
             int pageNumber = (page ?? 1);
             var currentUser = db.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
             var filtring = from r in db.JobPosts.OrderByDescending(d => d.PublishDate)
-                           where r.UserID.Id == currentUser.Id
+                           where r.UserID.Id == currentUser.Id && r.IsActive
                            select r;
             return View(filtring.ToPagedList(pageNumber, PAGE_SIZE));
         }
@@ -158,7 +158,7 @@ namespace JobSite.Controllers
         }
 
         // GET: JobPosts/Delete/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -176,13 +176,22 @@ namespace JobSite.Controllers
         // POST: JobPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             JobPost jobPost = db.JobPosts.Find(id);
-            jobPost.IsActive = false;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var currentUser = db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+            if (jobPost.UserID.Id == currentUser.Id)
+            {
+                jobPost.IsActive = false;
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("Не може да изтриете тази обява защото не сте собственика и или администратор");
+            }
+            
+            return RedirectToAction("ListOwn");
         }
 
         protected override void Dispose(bool disposing)

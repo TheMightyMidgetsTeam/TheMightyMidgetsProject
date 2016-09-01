@@ -57,10 +57,6 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     @:|
-                if (User.IsInRole("Administrators"))
-                    {
-                        @Html.ActionLink("Изтрий", "Delete", new { id = item.Id }) @:|
-                }
                     @Html.ActionLink("Кандидатствай", "Index", "ApplyJob", new { id = item.Id }, htmlAttributes: new { id = "applyJobLink" })
                 }
             </td>

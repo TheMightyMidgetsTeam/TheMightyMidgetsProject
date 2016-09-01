@@ -78,5 +78,5 @@
     String currentCategory = Request.QueryString["category"];
 }
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
+    @Html.PagedListPager(Model, page => Url.Action("ListOwn",
         new { page, category = currentCategory, city = currentCity }))

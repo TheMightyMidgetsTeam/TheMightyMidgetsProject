@@ -286,7 +286,11 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\arrow-down-icon.png" />
+    <Content Include="Images\candidatedlists.png" />
     <Content Include="Images\email.png" />
+    <Content Include="Images\listsJobs.png" />
+    <Content Include="Images\manage .png" />
+    <Content Include="Images\ownLists.png" />
     <Content Include="Images\padlock.png" />
     <Content Include="Images\pen.png" />
     <Content Include="Images\profile.png" />
@@ -443,6 +447,7 @@
     <Content Include="Views\ApplyJob\ListCandidates.cshtml" />
     <Content Include="Views\ApplyJob\ViewCandidate.cshtml" />
     <Content Include="Views\JobPosts\ListOwn.cshtml" />
+    <Content Include="Views\ApplyJob\ListAppliedJobs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

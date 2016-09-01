@@ -20,12 +20,43 @@ body {
   margin: 0;
 }
 
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #697075;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    background-color: transparent;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: rgba(122, 5, 5, 0.88);}
+
+ul.topnav li a.active {box-shadow: 10px 10px 50px 20px #770000 inset;}
+
+ul.topnav li.right {float: right;}
+@media(max-width: 600px)
+{
+    ul.topnav li.right,
+    ul.topnav li {
+        float: none;
+    }
+}
 h1 {
     background-image: url('../Images/arrow-down-icon.png');
     padding-left: 51px;
     background-repeat: no-repeat;
     background-size: 44px;
 }
+
 
 
 article,

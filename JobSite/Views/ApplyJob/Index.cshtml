@@ -4,7 +4,8 @@
     ViewBag.Title = "Кандидатстване";
 }
 
-<h2>Кандидатстване</h2>
+<h2>Кандидатстване 
+    <img src="~/Images/tick.png" height="57"/></h2>
 @using (Html.BeginForm("Index", "ApplyJob", null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

@@ -89,8 +89,11 @@ namespace JobSite.Controllers
             List<JobPost> jobs = new List<JobPost>();
             foreach (var item in appliedJobs)
             {
-                JobPost currentJob = db.JobPosts.FirstOrDefault(x => x.Id == item.JobPostId.Id);
-                jobs.Add(currentJob);
+                JobPost currentJob = db.JobPosts.FirstOrDefault(x => x.Id == item.JobPostId.Id && x.IsActive);
+                if (currentJob != null)
+                {
+                    jobs.Add(currentJob);
+                }                
             }
 
             ViewBag.Jobs = jobs;

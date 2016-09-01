@@ -10,7 +10,7 @@ using JobSite.Models;
 
 namespace JobSite.Controllers
 {
-    [Authorize(Roles = "Administrators")]
+    [Authorize(Roles = "Administrator")]
     public class CitiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
